@@ -1,3 +1,19 @@
+Makesure mysql database is running in the machine.
+
+Run this command in mysql :=> create database library_db
+
+Edit App.py , line 18, as follows: 
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:changeme@localhost/library_db'
+
+    replace the root and changeme with your username and password of mysql
+
+Make sure the following library are installed.
+
+    flask, flask_sqlalchemy, flask_login, mysql-connector-python
+
+
+
 _________________________
 
 GET endpoints
