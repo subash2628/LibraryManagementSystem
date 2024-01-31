@@ -66,6 +66,7 @@ _______________________________
 
 /books/<book_id>/details
 
+Input: JSON
 {
     "NumberOfPages":"", 
     "Publisher":"", 
