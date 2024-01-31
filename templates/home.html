@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Home</title>
+	<style>
+	h1 {
+		color: green;
+	}
+	</style>
+</head>
+<body>
+	{% if not current_user.is_authenticated %}
+		<nav>
+			<ul>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/users">Create account</a></li>
+			</ul>
+			</nav>
+	{% endif %}
+	
+	{% if current_user.is_authenticated %}
+	<h1>You are logged in</h1>
+	<nav>
+		<ul>
+			<li><a href="/logout">Logout</a></li>
+			<li><a href="/users/{{ current_user.UserID }}">My Profile</a></li>
+			<li><a href="/users/all">List All Users</a></li>
+			<li><a href="/books">List All Books</a></li>
+			<li><a href="/borrowed-books/{{ current_user.UserID }}">List All Borrowed Books</a></li>
+		</ul>
+		</nav>
+
+		<h1>Add a Book</h1>
+		<form action="/books" method="post">
+		<label for="title">Title:</label>
+		<input type="text" name="title" />
+		<label for="isbn">ISBN:</label>
+		<input type="text" name="isbn" />
+		<label for="published_date">PublishedDate:</label>
+		<input type="text" name="published_date" />
+		<label for="genre">Genre:</label>
+		<input type="text" name="genre" />
+		<button type="submit">Submit</button>
+		</form>
+	{% else %}
+	<h1>You are not logged in</h1>
+	{% endif %}
+</body>
+</html>
